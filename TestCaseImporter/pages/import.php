@@ -9,14 +9,14 @@ error_reporting(E_ALL);
 include_once(__DIR__.'/csv2xml/Csv2Xml.php');
 if (isset($_POST["submit"])) {    
     if ($_FILES["csvFile"]["size"] <= 400000) {
-		$fileName = $_FILES["csvFile"]["name"];
-		$fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
+	$fileName = $_FILES["csvFile"]["name"];
+	$fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
         if ($fileExt == 'csv') {
             $csv2Xml = new Csv2Xml();
-			$filePath = $_FILES["csvFile"]["tmp_name"];
-			$fileNameWoutExt = basename($fileName, $fileExt);
+            $filePath = $_FILES["csvFile"]["tmp_name"];
+            $fileNameWoutExt = basename($fileName, $fileExt);
             $xml = $csv2Xml->createXmlFromCsv($filePath);
-            sendXml($xml, $fileNameWoutExt.'.xml');
+            sendXml($xml, $fileNameWoutExt.'xml');
         } else {
             echo plugin_lang_get('invalidFile');
         }
@@ -26,6 +26,7 @@ if (isset($_POST["submit"])) {
 	return;
 }
 
+$gui->title = plugin_lang_get('title');
 $gui->labelHeaderMessage = plugin_lang_get('labelHeaderMessage');
 
 $smarty->assign('gui',$gui);

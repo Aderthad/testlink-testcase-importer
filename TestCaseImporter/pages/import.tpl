@@ -1,5 +1,5 @@
 {include 'inc_head.tpl'}
-<h1>{$gui->title}</h1>
+<p>{$gui->title}</p>
 
 <form method="post" enctype="multipart/form-data">
 	<input type='file' name='csvFile'/><br/>
