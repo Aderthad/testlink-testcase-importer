@@ -28,13 +28,10 @@ class TestCaseImporterPlugin extends TestlinkPlugin
 
   function config()
   {
-    return array(
-      'config1' => '',
-      'config2' => 0
-    );
+    return array();
   }
   
-  public function init()
+  function init()
   {
 	  
   }

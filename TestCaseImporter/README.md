@@ -1,1 +1,0 @@
-# testlink-testcase-importer
