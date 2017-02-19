@@ -1,0 +1,5 @@
+<?php
+$plugin_TestCaseImporter_left_bottom_link = "Create XML import file";
+$plugin_TestCaseImporter_labelHeaderMessage = "Convert";
+$plugin_TestCaseImporter_fileTooBig = "The file isn't a csv file";
+$plugin_TestCaseImporter_invalidFile = "The file is too big (limit 400kB)";
