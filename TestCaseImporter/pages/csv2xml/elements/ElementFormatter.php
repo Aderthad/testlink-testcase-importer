@@ -36,7 +36,7 @@ class ElementFormatter {
     private static function formatContent($c)
     {        
         if (strlen($c) == 0) {
-            return '';
+            return "";
         }
         return self::$cdata_start.$c.self::$cdata_end;
     }

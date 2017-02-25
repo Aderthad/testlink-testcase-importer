@@ -9,9 +9,10 @@ include_once(__DIR__."/../elements/TestSuiteElement.php");
 
 class Parser {
     function parse($file) {
-        $csv =  CsvReader::readCSV($file); 
-        //remove column labels
-        array_shift($csv);
+        $csv =  CsvReader::readCSV($file);
+        
+        //remove column headers
+        $columnHeaders = array_shift($csv);
         
         $parentTestSuite = new Element(ElementTypes::TEST_SUITE);
         $currentTestSuite = $parentTestSuite;
@@ -25,11 +26,11 @@ class Parser {
                     $currentTestSuite = $parentTestSuite;
                     $currentTestCase = null;
                 }
-                $existingSuite = $currentTestSuite->getChildElement($row[CsvRows::TEST_SUITE_NAME_ROW], ElementTypes::TEST_SUITE);
+                $existingSuite = $currentTestSuite->getChildElement($row[CsvColumns::TEST_SUITE_NAME_COLUMN], ElementTypes::TEST_SUITE);
                 if(empty($existingSuite)) {
                     $newTestSuite = new TestSuiteElement();
-                    $newTestSuite->setName($row[CsvRows::TEST_SUITE_NAME_ROW]);                    
-                    $newTestSuite->setDetail($row[CsvRows::TEST_SUITE_DETAILS_ROW]);
+                    $newTestSuite->setName($row[CsvColumns::TEST_SUITE_NAME_COLUMN]);                    
+                    $newTestSuite->setDetail($row[CsvColumns::TEST_SUITE_DETAILS_COLUMN]);
                     $currentTestSuite->addChildElement($newTestSuite);
                     $currentTestSuite = $newTestSuite;                    
                 } else {         
@@ -39,13 +40,14 @@ class Parser {
             
             if(ElementTypes::TEST_CASE == $elementType){
                 $newTestCase = new TestCaseElement();
-                $newTestCase->setName($row[CsvRows::TEST_CASE_NAME_ROW]);
-                $newTestCase->setSummary($row[CsvRows::TEST_CASE_SUMMARY_ROW]);
-                $newTestCase->setPreconditions($row[CsvRows::TEST_CASE_PRECONDITIONS_ROW]);
-                $newTestCase->setExeType($row[CsvRows::TEST_CASE_EXE_TYPE_ROW]);
-                $newTestCase->setImportance($row[CsvRows::TEST_CASE_IMPORTANCE]);
-                $currentTestSuite->addChildElement($newTestCase);
-                $this->handleStep($row, $newTestCase);                
+                $newTestCase-> setName($row[CsvColumns::TEST_CASE_NAME_COLUMN]);
+                $newTestCase-> setSummary($row[CsvColumns::TEST_CASE_SUMMARY_COLUMN]);
+                $newTestCase-> setPreconditions($row[CsvColumns::TEST_CASE_PRECONDITIONS_COLUMN]);
+                $newTestCase-> setExeType($row[CsvColumns::TEST_CASE_EXE_TYPE_COLUMN]);
+                $newTestCase-> setImportance($row[CsvColumns::TEST_CASE_IMPORTANCE_COLUMN]);
+                $this-> handleStep($row, $newTestCase);
+                $this-> handleCustomFields($columnHeaders, $row, $newTestCase);
+                $currentTestSuite-> addChildElement($newTestCase);
                 $currentTestCase = $newTestCase;
             }
             
@@ -58,7 +60,17 @@ class Parser {
     }
     
     private function handleStep($row, $testCase) {
-        $testCase->addStep($row[CsvRows::STEP_ROW]);
-        $testCase->addExpResult($row[CsvRows::EXP_RESULT_ROW]);
+        $testCase->addStep($row[CsvColumns::STEP_COLUMN]);
+        $testCase->addExpResult($row[CsvColumns::EXP_RESULT_COLUMN]);
+    }
+    
+    private function handleCustomFields($columnHeaders, $row, $testCase) {
+        $currentColumn = CsvColumns::CUSTOM_FIELDS_START_COLUMN;
+        while(!empty($columnHeaders[$currentColumn])) {
+            if(!empty($row[$currentColumn])) {
+                $testCase-> addCustomField($columnHeaders[$currentColumn], $row[$currentColumn]);
+            }
+            $currentColumn++;
+        }
     }
 }

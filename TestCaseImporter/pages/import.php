@@ -23,7 +23,7 @@ if (isset($_POST["submit"])) {
     } else {
         echo plugin_lang_get('fileTooBig');
     }
-	return;
+    return;
 }
 
 $gui->title = plugin_lang_get('title');
