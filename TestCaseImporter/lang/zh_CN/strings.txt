@@ -1,6 +1,6 @@
 <?php
 $TLS_plugin_TestCaseImporter_left_bottom_link = "创建XML导入文件";
 $TLS_plugin_TestCaseImporter_labelHeaderMessage = "转换";
-$TLS_plugin_TestCaseImporter_fileTooBig = "当前文件不是CSV格式。";
-$TLS_plugin_TestCaseImporter_invalidFile = "当前文件过大（上限400kB）";
-$TLS_plugin_TestCaseImporter_title = "选择待转换的CSV文件";
+$TLS_plugin_TestCaseImporter_fileTooBig = "当前文件过大（上限400kB）";
+$TLS_plugin_TestCaseImporter_invalidFile = "当前文件不是CSV格式。";
+$TLS_plugin_TestCaseImporter_title = "TestCaseImporter - 请选择待转换的CSV文件";
