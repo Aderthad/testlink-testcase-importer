@@ -1,0 +1,39 @@
+Test suite name;Test suite details;TC number;TC Name;Summary;Preconditions;Execution type;Importance;Step;Expected result;Execution type;Req title;Req doc ID;Custom 1;Custom 2;Custom 3
+Check Optio<<<ns;Check coffee maker options;;;;;;;;;;;;;;
+Check Menu Options;Check menu options;;;;;;;;;;;;;;
+;;;Check inventory;How much coffee, milk and water i<<<<<s available in coffee machine;RunCoffeeMaker;1;2;Enter: Menu option 5, Check inventory;Coffee:15, Milk: 15;;;;Custom value;;Custom value
+;;;;;;;;Return to main menu;Returns to main menu;;;;;;
+;;;Add inventory;Add inventory to the coffee machine;;1;2;Enter: Menu option 4, Add inventory;Please enter milk amount;;;;Custom value;;
+;;;;;;;;Milk: 10;Please enter sugar amount;;;;;;
+;;;;;;;;Sugar: 5;Please enter coffee amount;;;;;;
+;;;;;;;;Coffee: a;Please input an integer;;;;;;
+Check Options;;;;;;;;;;;;;;;
+Check Grinder settings;Check grinder settings;;;;;;;;;;;;;;
+;;;Set grinder intensity to maximum;Set bean grinder intensity;;2;3;Open coffee bean container;Container opens;;;;Custom value;;
+;;;;;;;;Turn the grinder wheel to 1;Wheel turns to 1;;;;;;
+;;;;;;;;Test grinder;Grinder makes finest coffee;;;;;;
+;;;Set grinder intensity to minimum;Set bean grinder intensity;;2;3;Open coffee bean container;Container opens;;;;;;Custom value
+;;;;;;;;Turn the grinder wheel to 7;Wheel turns to 7;;;;;;
+;;;;;;;;Test grinder;Grinder makes coarsest coffee;;;;;;
+Recipes;Recipes in the coffee maker;;;;;;;;;;;;;;
+Drink recipes;Recipes for drinks;;;;;;;;;;;;;;
+Coffee recipes;Recipes for coffee;;;;;;;;;;;;;;
+;;;Purchase beverage 1;Try to purchase beverage type 1;;1;2;Enter: Menu option 6, Make coffee;Continue;;;;Custom value;;
+;;;;;;;;Select Coffee amount 10;Continue;;;;;;
+;;;;;;;;Return to main menu;Machine goes to main menu;;;;;;
+;;;Purchase beverage 2;Try to purchase beverage type 2;;1;2;Enter: Menu option 6, Make coffee;Continue;;;;;Custom value;
+;;;;;;;;Select Coffee amount 10;Continue;;;;;;
+;;;;;;;;Select Milk amount 10;Continue;;;;;;
+;;;;;;;;Return to main menu;Machine goes to main menu;;;;;;
+Recipes;;;;;;;;;;;;;;;
+Drink recipes;;;;;;;;;;;;;;;
+Chocolate recipes;Recipes for chocolate;;;;;;;;;;;;;;
+;;;Purchase beverage 3;Try to purchase beverage type 3;;1;2;Enter: Menu option 6, Make chocolate;Continue;;;;;;
+;;;;;;;;Select Chocolate amount 10;Machine makes chocolate;;;;;;
+Operations;Operating the machine;;;;;;;;;;;;;;
+;;;No water run;Try to run w/o water;;1;1;Try to run w/o water;Machine reports not enough water;;;;;;
+;;;No beans run;Try to run w/o beans;;1;1;Try to run w/o beans;Machine reports no coffee beans;;;;;;
+;;;Scaled container run;Try to run with bad container;;1;1;Try to run with bad container;Machine reports scaled water container;;;;;;
+;;;Mill door open;Try to run with open doors;;1;1;Try to run with open doors;Machine runs even with mill door open;;;;;;
+;;;Save favourite drink;Try to save drink;;1;1;Try to save drink;Drink is saved;;;;;;
+;;;Turn on steamer;Try to turn on steamer;;1;1;Try to turn on steamer;Steamer turned on;;;;;;

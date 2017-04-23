@@ -6,6 +6,7 @@ class TestCaseElement extends Element {
    public $importance;
    public $step;
    public $exptectedResult;
+   public $customFields;
    
    private $eol = "\r\n";
            
@@ -49,6 +50,21 @@ class TestCaseElement extends Element {
     
     function addStep($step){
         $this-> step -> content .= $this-> eol.$step;
+    }
+    
+    function addCustomField($name, $value) {
+        if(empty($this->customFields)) {
+            $this-> customFields = new Element(ElementTypes::CUSTOM_FIELDS);
+            $this-> addChildElement($this->customFields);
+        }
+        $customField = new Element(ElementTypes::CUSTOM_FIELD);
+        $customFieldName = new Element(ElementTypes::CUSTOM_FIELD_NAME);
+        $customFieldName-> content = $name;
+        $customFieldValue = new Element(ElementTypes::CUSTOM_FIELD_VALUE);
+        $customFieldValue->content= $value;
+        $customField-> addChildElement($customFieldName);
+        $customField-> addChildElement($customFieldValue);
+        $this-> customFields->addChildElement($customField);
     }
     
     function addExpResult($expResult){
