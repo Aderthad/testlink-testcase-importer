@@ -36,12 +36,12 @@ $smarty->display(plugin_file_path('import.tpl'));
 function sendXml($xml, $name){
     $tempfolder = ini_get('upload_tmp_dir');
     $file = $tempfolder . '/' . $name;
-    $output = fopen(path, "wb");
+    $output = fopen($file, "wb");
     fwrite($output, $xml);
     fclose($output);
     header('Content-Description: File Transfer');
     header('Content-Type: text/xml');
-    header('Content-Disposition: attachment; filename="'.basename($file).'"');
+    header('Content-Disposition: attachment; filename="'.$name.'"');
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
     header('Pragma: public');
