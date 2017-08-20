@@ -2,6 +2,7 @@
 <h1 class="title">{$gui->title}</h1>
 
 <div class="workBack">
+    {$gui->message}
     <form method="post" enctype="multipart/form-data">
             <input type='file' name='csvFile'/><br/>
             <input name="submit" type="submit" value="{$gui->labelHeaderMessage}"/>

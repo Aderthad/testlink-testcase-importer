@@ -8,6 +8,9 @@ class CsvColumns {
     const TEST_CASE_EXE_TYPE_COLUMN = 6;
     const TEST_CASE_IMPORTANCE_COLUMN = 7;
     const STEP_COLUMN = 8;
-    const EXP_RESULT_COLUMN = 9;
+    const STEP_EXP_RESULT_COLUMN = 9;
+    const STEP_EXP_TYPE_COLUMN = 10;
+    const TEST_CASE_REQ_TITLE = 11;
+    const TEST_CASE_REQ_DOC_ID = 12;
     const CUSTOM_FIELDS_START_COLUMN = 13;
 }

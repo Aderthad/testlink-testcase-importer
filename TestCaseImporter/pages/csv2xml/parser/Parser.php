@@ -46,6 +46,7 @@ class Parser {
                 $newTestCase-> setExeType($row[CsvColumns::TEST_CASE_EXE_TYPE_COLUMN]);
                 $newTestCase-> setImportance($row[CsvColumns::TEST_CASE_IMPORTANCE_COLUMN]);
                 $this-> handleStep($row, $newTestCase);
+                $this-> handleRequirements($row, $newTestCase);
                 $this-> handleCustomFields($columnHeaders, $row, $newTestCase);
                 $currentTestSuite-> addChildElement($newTestCase);
                 $currentTestCase = $newTestCase;
@@ -59,9 +60,17 @@ class Parser {
         return $parentTestSuite;
     }
     
-    private function handleStep($row, $testCase) {
-        $testCase->addStep($row[CsvColumns::STEP_COLUMN]);
-        $testCase->addExpResult($row[CsvColumns::EXP_RESULT_COLUMN]);
+   private function handleStep($row, $testCase) {
+        $stepName = $row[CsvColumns::STEP_COLUMN];
+        $stepExpResult = $row[CsvColumns::STEP_EXP_RESULT_COLUMN];
+        $stepExeType = $row[CsvColumns::STEP_EXP_TYPE_COLUMN];
+        $testCase->addStep($stepName, $stepExpResult, $stepExeType);
+    }
+    
+    private function handleRequirements($row, $testCase) {
+        $title = $row[CsvColumns::TEST_CASE_REQ_TITLE];
+        $docId = $row[CsvColumns::TEST_CASE_REQ_DOC_ID];        
+        $testCase->addRequirement($title, $docId);
     }
     
     private function handleCustomFields($columnHeaders, $row, $testCase) {

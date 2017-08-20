@@ -18,13 +18,13 @@ if (isset($_POST["submit"])) {
             $fileNameWoutExt = basename($fileName, $fileExt);
             $xml = $csv2Xml->createXmlFromCsv($filePath);
             sendXml($xml, $fileNameWoutExt.'xml');
+            return;
         } else {
-            echo plugin_lang_get('invalidFile');
+            $gui->message = plugin_lang_get('invalidFile');
         }
     } else {
-        echo plugin_lang_get('fileTooBig');
+        $gui->message = plugin_lang_get('fileTooBig');
     }
-    return;
 }
 
 $gui->title = plugin_lang_get('title');
