@@ -1,5 +1,5 @@
 <?php
-$TLS_plugin_TestCaseImporter_left_bottom_link = "Create XML import file from CSV";
+$TLS_plugin_TestCaseImporter_left_bottom_link = "TestCaseImporter - Create XML import file from CSV";
 $TLS_plugin_TestCaseImporter_labelHeaderMessage = "Convert";
 $TLS_plugin_TestCaseImporter_fileTooBig = "The file is too big (limit 400kB)";
 $TLS_plugin_TestCaseImporter_invalidFile = "The file isn't a csv file";

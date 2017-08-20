@@ -1,4 +1,6 @@
 <?php
+include_once(__DIR__.'/csv2xml/Csv2Xml.php');
+
 $smarty = new TLSmarty();
 $gui = new stdClass();
 
@@ -6,7 +8,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include_once(__DIR__.'/csv2xml/Csv2Xml.php');
 if (isset($_POST["submit"])) {    
     if ($_FILES["csvFile"]["size"] <= 400000) {
 	$fileName = $_FILES["csvFile"]["name"];
@@ -32,8 +33,10 @@ $gui->labelHeaderMessage = plugin_lang_get('labelHeaderMessage');
 $smarty->assign('gui',$gui);
 $smarty->display(plugin_file_path('import.tpl'));
 
-function sendXml($xml, $file){    
-    $output = fopen($file, "wb");
+function sendXml($xml, $name){
+    $tempfolder = ini_get('upload_tmp_dir');
+    $file = $tempfolder . '/' . $name;
+    $output = fopen(path, "wb");
     fwrite($output, $xml);
     fclose($output);
     header('Content-Description: File Transfer');
