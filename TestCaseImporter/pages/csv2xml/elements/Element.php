@@ -26,12 +26,12 @@ class Element
         $newAtt = new Attribute();
         $newAtt->name = $n;
         $newAtt->value = $v;
-        array_push($this->attributes, $newAtt);
+        $this->attributes[] = $newAtt;
     }
     
     function addChildElement($ce)
     {
-        array_push($this->childrenElements, $ce);
+        $this->childrenElements[] = $ce;
     }
     
     function getChildElement($name, $category) {

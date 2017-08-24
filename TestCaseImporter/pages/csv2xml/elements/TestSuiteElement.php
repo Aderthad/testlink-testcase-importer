@@ -1,5 +1,7 @@
 <?php
-class TestSuiteElement extends Element {
+include_once(__DIR__."/EntityElement.php");
+
+class TestSuiteElement extends EntityElement {
     
     public $detail;
     

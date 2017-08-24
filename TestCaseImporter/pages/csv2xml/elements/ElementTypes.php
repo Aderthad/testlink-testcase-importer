@@ -7,6 +7,8 @@ class ElementTypes {
     const PRECONDITIONS = "preconditions";
     const EXE_TYPE = "execution_type";
     const IMPORTANCE = "importance";
+    const KEYWORDS = "keywords";
+    const KEYWORD = "keyword";
     const STEPS = "steps";
     const STEP = "step";
     const STEP_NUMBER = "step_number";

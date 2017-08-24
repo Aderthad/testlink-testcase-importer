@@ -2,10 +2,10 @@
 class TestStepElement extends Element {
     const DEFAULT_EXE_TYPE = '1';
     
-    private $step_number;
-    private $actions;
-    private $expectedresults;
-    private $execution_type;
+    public $step_number;
+    public $actions;
+    public $expectedresults;
+    public $execution_type;
     
     function __construct() {
         parent::__construct(ElementTypes::STEP);

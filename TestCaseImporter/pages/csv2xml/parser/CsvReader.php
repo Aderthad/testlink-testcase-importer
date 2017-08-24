@@ -8,7 +8,7 @@ class CsvReader {
         $return = array();
         while(!$csv->eof()) {
             $row = $csv->fgetcsv(";");            
-            array_push($return, $row);   
+            $return[] = $row;
         }
         $csv = null;
         return $return;

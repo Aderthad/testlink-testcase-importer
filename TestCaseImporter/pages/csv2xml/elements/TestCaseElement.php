@@ -1,7 +1,8 @@
 <?php
 include_once(__DIR__."/TestStepElement.php");
+include_once(__DIR__."/EntityElement.php");
 
-class TestCaseElement extends Element {
+class TestCaseElement extends EntityElement {
    public $summary;
    public $preconditions;
    public $exeType;

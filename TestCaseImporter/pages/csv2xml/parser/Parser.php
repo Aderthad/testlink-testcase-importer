@@ -8,13 +8,16 @@ include_once(__DIR__."/../elements/TestCaseElement.php");
 include_once(__DIR__."/../elements/TestSuiteElement.php");
 
 class Parser {
+    
+    const KEYWORD_DELIMETER = ',';
+    
     function parse($file) {
         $csv =  CsvReader::readCSV($file);
         
         //remove column headers
         $columnHeaders = array_shift($csv);
         
-        $parentTestSuite = new Element(ElementTypes::TEST_SUITE);
+        $parentTestSuite = new TestSuiteElement();
         $currentTestSuite = $parentTestSuite;
         $currentTestCase = null;
         
@@ -31,8 +34,9 @@ class Parser {
                     $newTestSuite = new TestSuiteElement();
                     $newTestSuite->setName($row[CsvColumns::TEST_SUITE_NAME_COLUMN]);                    
                     $newTestSuite->setDetail($row[CsvColumns::TEST_SUITE_DETAILS_COLUMN]);
+                    $this-> handleKeywords($row, $newTestSuite, $currentTestSuite);
                     $currentTestSuite->addChildElement($newTestSuite);
-                    $currentTestSuite = $newTestSuite;                    
+                    $currentTestSuite = $newTestSuite;
                 } else {         
                     $currentTestSuite = $existingSuite;
                 }
@@ -48,6 +52,7 @@ class Parser {
                 $this-> handleStep($row, $newTestCase);
                 $this-> handleRequirements($row, $newTestCase);
                 $this-> handleCustomFields($columnHeaders, $row, $newTestCase);
+                $this-> handleKeywords($row, $newTestCase, $currentTestSuite);
                 $currentTestSuite-> addChildElement($newTestCase);
                 $currentTestCase = $newTestCase;
             }
@@ -60,7 +65,20 @@ class Parser {
         return $parentTestSuite;
     }
     
-   private function handleStep($row, $testCase) {
+    private function handleKeywords($row, $element, $parent) {        
+        //keywords are copied from parent first by default
+        $keywordsArray = $parent->keywordsArray;
+        $keywords = $row[CsvColumns::KEYWORDS];        
+        $newKeywords = array_map('trim', explode(self::KEYWORD_DELIMETER, $keywords));
+        $newKeywords = array_filter($newKeywords, 'strlen');
+        $keywordsArray = array_merge($keywordsArray, $newKeywords);
+        
+        foreach($keywordsArray as $keyword) {
+            $element->addKeyword($keyword);
+        }
+    }
+    
+    private function handleStep($row, $testCase) {
         $stepName = $row[CsvColumns::STEP_COLUMN];
         $stepExpResult = $row[CsvColumns::STEP_EXP_RESULT_COLUMN];
         $stepExeType = $row[CsvColumns::STEP_EXP_TYPE_COLUMN];
@@ -69,8 +87,10 @@ class Parser {
     
     private function handleRequirements($row, $testCase) {
         $title = $row[CsvColumns::TEST_CASE_REQ_TITLE];
-        $docId = $row[CsvColumns::TEST_CASE_REQ_DOC_ID];        
-        $testCase->addRequirement($title, $docId);
+        $docId = $row[CsvColumns::TEST_CASE_REQ_DOC_ID];
+        if(!empty($title) && !empty($docId)) {
+            $testCase->addRequirement($title, $docId);
+        }
     }
     
     private function handleCustomFields($columnHeaders, $row, $testCase) {
