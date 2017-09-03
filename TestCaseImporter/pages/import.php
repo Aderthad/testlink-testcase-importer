@@ -1,4 +1,5 @@
 <?php
+include_once(__DIR__."/CsvReader.php");
 include_once(__DIR__.'/csv2xml/Csv2Xml.php');
 
 $smarty = new TLSmarty();
@@ -13,10 +14,11 @@ if (isset($_POST["submit"])) {
 	$fileName = $_FILES["csvFile"]["name"];
 	$fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
         if ($fileExt == 'csv') {
-            $csv2Xml = new Csv2Xml();
             $filePath = $_FILES["csvFile"]["tmp_name"];
+            $csv =  CsvReader::readCSV($filePath);            
+            $csv2Xml = new Csv2Xml();
+            $xml = $csv2Xml->createXmlFromCsv($csv);
             $fileNameWoutExt = basename($fileName, $fileExt);
-            $xml = $csv2Xml->createXmlFromCsv($filePath);
             sendXml($xml, $fileNameWoutExt.'xml');
             return;
         } else {

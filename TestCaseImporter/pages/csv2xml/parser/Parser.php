@@ -1,5 +1,4 @@
 <?php
-include_once(__DIR__."/CsvReader.php");
 include_once(__DIR__."/CsvRows.php");
 include_once(__DIR__."/RowIdentifier.php");
 include_once(__DIR__."/../elements/Element.php");
@@ -11,9 +10,7 @@ class Parser {
     
     const KEYWORD_DELIMETER = ',';
     
-    function parse($file) {
-        $csv =  CsvReader::readCSV($file);
-        
+    function parse($csv) {
         //remove column headers
         $columnHeaders = array_shift($csv);
         
