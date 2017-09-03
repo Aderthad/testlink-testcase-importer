@@ -42,7 +42,7 @@ function sendXml($xml, $name){
     fwrite($output, $xml);
     fclose($output);
     header('Content-Description: File Transfer');
-    header('Content-Type: text/xml');
+    header('Content-Type: text/xml; charset=UTF-8');
     header('Content-Disposition: attachment; filename="'.$name.'"');
     header('Expires: 0');
     header('Cache-Control: must-revalidate');

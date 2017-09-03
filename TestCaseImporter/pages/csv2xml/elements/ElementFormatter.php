@@ -28,7 +28,7 @@ class ElementFormatter {
         $builder = "";     
         foreach ($as as $loop)
         {           
-           $builder.= sprintf(self::$attributeFormatString, $loop->name, htmlentities($loop->value));
+           $builder.= sprintf(self::$attributeFormatString, $loop->name, htmlspecialchars ($loop->value));
         }
         return $builder;
     }
