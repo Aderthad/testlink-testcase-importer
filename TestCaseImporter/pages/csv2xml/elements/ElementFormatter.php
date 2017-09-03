@@ -1,7 +1,9 @@
 <?php
 
 class ElementFormatter {
-        
+    
+    private static $UTF_8 = 'UTF-8';
+    
     private static $attributeFormatString = ' %s="%s"';        
     private static $cdata_start = '<![CDATA[';
     private static $cdata_end = ']]>';
@@ -28,7 +30,7 @@ class ElementFormatter {
         $builder = "";     
         foreach ($as as $loop)
         {           
-           $builder.= sprintf(self::$attributeFormatString, $loop->name, htmlspecialchars ($loop->value));
+           $builder.= sprintf(self::$attributeFormatString, $loop->name, htmlspecialchars($loop->value, ENT_COMPAT | ENT_HTML401, self::$UTF_8));
         }
         return $builder;
     }
