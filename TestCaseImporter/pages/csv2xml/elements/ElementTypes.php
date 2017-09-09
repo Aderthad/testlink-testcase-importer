@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * TestCaseImporter - https://github.com/Aderthad/testlink-testcase-importer
+ * This script is distributed under the GNU General Public License 3 or later.
+ *
+ * This class is an enumeration of element types (names).
+ */
 class ElementTypes {
     const TEST_SUITE = "testsuite";
     const TEST_CASE = "testcase"; 

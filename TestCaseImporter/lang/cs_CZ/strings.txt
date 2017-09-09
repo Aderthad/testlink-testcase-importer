@@ -1,0 +1,6 @@
+<?php
+$TLS_plugin_TestCaseImporter_left_bottom_link = "TestCaseImporter";
+$TLS_plugin_TestCaseImporter_labelHeaderMessage = "Převést";
+$TLS_plugin_TestCaseImporter_fileTooBig = "Soubor je příliš velký (max. velikost 400kB).";
+$TLS_plugin_TestCaseImporter_invalidFile = "Vybraný soubor není v csv formátu.";
+$TLS_plugin_TestCaseImporter_title = "TestCaseImporter - Vyberte CSV soubor k převedení";

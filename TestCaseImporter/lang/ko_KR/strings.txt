@@ -1,0 +1,6 @@
+<?php
+$TLS_plugin_TestCaseImporter_left_bottom_link = "TestCaseImporter";
+$TLS_plugin_TestCaseImporter_labelHeaderMessage = "파일 변환";
+$TLS_plugin_TestCaseImporter_fileTooBig = "입력하신 파일이 너무 큽니다 (파일 최대 크기가 400kB입니다).";
+$TLS_plugin_TestCaseImporter_invalidFile = "입력하신 파일은 CSV 파일이 아닙니다.";
+$TLS_plugin_TestCaseImporter_title = "TestCaseImporter - 변환시킬 CSV 파일을 고르십시오";

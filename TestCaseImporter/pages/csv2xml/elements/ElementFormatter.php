@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * TestCaseImporter - https://github.com/Aderthad/testlink-testcase-importer
+ * This script is distributed under the GNU General Public License 3 or later.
+ *
+ * The sole purpose of this class is to format given Element to its XML representation.
+ */
 class ElementFormatter {
     
     private static $UTF_8 = 'UTF-8';
@@ -8,6 +14,11 @@ class ElementFormatter {
     private static $cdata_start = '<![CDATA[';
     private static $cdata_end = ']]>';
     
+    /**
+     * This function formats given Element to its XML representation.
+     * @param Element $e Element to be formatted.
+     * @return string given Element formatted to its XML representation
+     */
     static function formatElement($e)
     {           
         $builder = '<'.$e->elementType;

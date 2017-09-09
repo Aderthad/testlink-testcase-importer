@@ -1,4 +1,12 @@
 <?php
+/**
+ * TestCaseImporter - https://github.com/Aderthad/testlink-testcase-importer
+ * This script is distributed under the GNU General Public License 3 or later.
+ *
+ * This class is an indexed enumeration of all columns present in the template
+ * (template.xlsx).
+ */
+
 class CsvColumns {
     const TEST_SUITE_NAME_COLUMN = 0;
     const TEST_SUITE_DETAILS_COLUMN = 1;
