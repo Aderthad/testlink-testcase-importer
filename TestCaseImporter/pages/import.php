@@ -17,10 +17,10 @@ error_reporting(E_ALL);
 
 // instantiate a new Smarty class that will hold path to the smarty template and langtexts
 $smarty = new TLSmarty();
-// holder object for langtexts
+// a holder object for langtexts
 $gui = new stdClass();
 
-// check whether user has uploaded a file
+// check whether the user has uploaded a file
 if (isset($_POST["submit"])) {
     // check file's size
     if ($_FILES["csvFile"]["size"] <= 400000) {
@@ -36,8 +36,8 @@ if (isset($_POST["submit"])) {
             // import xml format
             $xml = $csv2Xml->createXmlFromCsv($csv);
             $fileNameWoutExt = basename($fileName, $fileExt);
-            // sends the XML file to user
-            // (same file name as the original csv file but with xml extenstion)
+            // sends the XML file to the user
+            // (same file name as the original csv file but ends with xml extenstion)
             sendXml($xml, $fileNameWoutExt.'xml');
             // exit the script
             return;
