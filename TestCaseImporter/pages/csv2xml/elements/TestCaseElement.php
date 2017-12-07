@@ -9,10 +9,14 @@ include_once(__DIR__."/EntityElement.php");
  * This class represents a TestLink test case XML element.
  */
 class TestCaseElement extends EntityElement {
+   const DEFAULT_STATUS = '1';
+    
    public $summary;
    public $preconditions;
+   public $status;
    public $exeType;
    public $importance;
+   public $duration;
    public $steps;
    public $requirements;
    public $customFields;
@@ -29,11 +33,18 @@ class TestCaseElement extends EntityElement {
         $this-> preconditions = new Element(ElementTypes::PRECONDITIONS);
         $this-> addChildElement($this-> preconditions);
         
+        $this-> status = new Element(ElementTypes::STATUS);
+        $this-> status -> content = self::DEFAULT_STATUS;
+        $this-> addChildElement($this-> status);
+        
         $this-> exeType = new Element(ElementTypes::EXE_TYPE);
         $this-> addChildElement($this-> exeType);
 
         $this-> importance = new Element(ElementTypes::IMPORTANCE);
         $this-> addChildElement($this-> importance);
+        
+        $this-> duration = new Element(ElementTypes::DURATION);
+        $this-> addChildElement($this-> duration);
     }
 
     /**
@@ -53,6 +64,16 @@ class TestCaseElement extends EntityElement {
     }
     
     /**
+     * Sets this element's status.
+     * @param string $status status to be set.
+     */
+    function setStatus($status) {
+        if(!empty($status)) {
+            $this-> status -> content = $status;
+        }
+    }
+    
+    /**
      * Sets this element's execution type.
      * @param string $exeType execution type to be set.
      */
@@ -66,6 +87,14 @@ class TestCaseElement extends EntityElement {
      */
     function setImportance($importance) {
          $this-> importance -> content = $importance;
+    }
+    
+    /**
+     * Sets this element's duration.
+     * @param string $duration duration to be set.
+     */
+    function setDuration($duration) {
+         $this-> duration -> content = $duration;
     }
     
     /**

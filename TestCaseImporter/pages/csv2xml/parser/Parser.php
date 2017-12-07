@@ -70,8 +70,10 @@ class Parser {
                 $newTestCase-> setName($row[CsvColumns::TEST_CASE_NAME_COLUMN]);
                 $newTestCase-> setSummary($row[CsvColumns::TEST_CASE_SUMMARY_COLUMN]);
                 $newTestCase-> setPreconditions($row[CsvColumns::TEST_CASE_PRECONDITIONS_COLUMN]);
+                $newTestCase-> setStatus($row[CsvColumns::TEST_CASE_STATUS]);
                 $newTestCase-> setExeType($row[CsvColumns::TEST_CASE_EXE_TYPE_COLUMN]);
                 $newTestCase-> setImportance($row[CsvColumns::TEST_CASE_IMPORTANCE_COLUMN]);
+                $newTestCase-> setDuration($row[CsvColumns::TEST_CASE_EXP_EXEC_DURATION]);
                 // handle first test case step
                 $this-> handleStep($row, $newTestCase);
                 $this-> handleRequirements($row, $newTestCase);

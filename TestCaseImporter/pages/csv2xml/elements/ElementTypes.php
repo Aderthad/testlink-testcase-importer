@@ -11,9 +11,11 @@ class ElementTypes {
     const TEST_CASE = "testcase"; 
     const DETAILS = "details";
     const SUMMARY = "summary";
+    const STATUS = "status";
     const PRECONDITIONS = "preconditions";
     const EXE_TYPE = "execution_type";
     const IMPORTANCE = "importance";
+    const DURATION = "estimated_exec_duration";
     const KEYWORDS = "keywords";
     const KEYWORD = "keyword";
     const STEPS = "steps";
