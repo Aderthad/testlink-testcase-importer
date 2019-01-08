@@ -78,6 +78,8 @@ class TestCaseImporterPlugin extends TestlinkPlugin
    */
   function import_link() 
   {
-    return "<a href='" . plugin_page('import.php') . "'>".plugin_lang_get('left_bottom_link')."</a>";
+    $menu_item['href'] = plugin_page('import.php');
+    $menu_item['label'] = plugin_lang_get('left_bottom_link');
+    return $menu_item;
   }
 }
